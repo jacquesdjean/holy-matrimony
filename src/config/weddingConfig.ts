@@ -1,6 +1,6 @@
 export const weddingConfig = {
   couple: {
-    name: "Vosko-Jean",
+    name: "Jean-Vosko",
   },
   date: {
     full: "Saturday, September 26, 2026",
@@ -41,7 +41,7 @@ export const weddingConfig = {
       description: "A beautifully restored Victorian inn in the heart of Apalachicola",
       mapLink: "https://maps.google.com/?q=Gibson+Inn+Apalachicola+FL",
       image: "png_7",
-      roomBlockNote: "Mention Vosko-Jean Wedding when booking. Room block on 2nd floor.",
+      roomBlockNote: "Mention Jean-Vosko Wedding when booking. Room block on 2nd floor.",
     },
   },
   schedule: [
@@ -95,7 +95,7 @@ export const weddingConfig = {
       name: "Gibson Inn",
       isPrimary: true,
       roomBlock: true,
-      roomBlockNote: "Room block on 2nd floor. Mention Vosko-Jean Wedding when booking.",
+      roomBlockNote: "Room block on 2nd floor. Mention Jean-Vosko Wedding when booking.",
       phone: "(850) 653-2191",
       website: "https://www.gibsoninn.com",
       walkable: true,
