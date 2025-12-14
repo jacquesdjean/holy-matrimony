@@ -66,7 +66,7 @@ const CoupleName = styled.h1`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: ${({ theme }) => theme.fontWeights.light};
   letter-spacing: 0.1em;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.mauve};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   /* Mobile-first: base size */

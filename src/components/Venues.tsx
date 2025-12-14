@@ -23,24 +23,6 @@ const VenuesGrid = styled.div`
   }
 `;
 
-const PhotoNote = styled.p`
-  text-align: center;
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.muted};
-  font-style: italic;
-  max-width: 100%;
-  margin: 2rem auto 0;
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.cream};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-
-  ${({ theme }) => theme.media.tablet} {
-    max-width: 600px;
-    font-size: 1rem;
-    padding: 1.5rem;
-  }
-`;
-
 export const Venues: React.FC = () => {
   const { ceremony, reception, hub } = weddingConfig.venues;
 
@@ -76,7 +58,6 @@ export const Venues: React.FC = () => {
           roomBlockNote={hub.roomBlockNote}
         />
       </VenuesGrid>
-      <PhotoNote>{weddingConfig.copy.photoNote}</PhotoNote>
     </Section>
   );
 };

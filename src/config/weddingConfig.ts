@@ -1,6 +1,8 @@
+import { weddingImages } from './images';
+
 export const weddingConfig = {
   couple: {
-    name: "Jean-Vosko",
+    name: "Jacques and Caroline",
   },
   date: {
     full: "Saturday, September 26, 2026",
@@ -21,7 +23,7 @@ export const weddingConfig = {
       capacity: 200,
       description: "Historic Episcopal church dating to 1836, one of Florida's oldest",
       mapLink: "https://maps.google.com/?q=Trinity+Episcopal+Church+Apalachicola+FL",
-      image: "png_5",
+      image: weddingImages.trinityChurch,
       guestNotes: [
         "Flash photography is not permitted during the ceremony",
         "Videography is permitted from the balcony only",
@@ -31,7 +33,7 @@ export const weddingConfig = {
       name: "Benedict Hall",
       description: "Historic hall adjacent to Trinity Church",
       note: "Reception immediately following ceremony — no need to travel",
-      image: "png_6",
+      image: weddingImages.benedictHall,
     },
     hub: {
       name: "Gibson Inn",
@@ -41,7 +43,7 @@ export const weddingConfig = {
       website: "https://www.gibsoninn.com",
       description: "A beautifully restored Victorian inn in the heart of Apalachicola — the hub for our weekend together",
       mapLink: "https://maps.google.com/?q=Gibson+Inn+Apalachicola+FL",
-      image: "png_7",
+      image: weddingImages.gibsonInn,
       roomBlockNote: "Mention Jean-Vosko Wedding when booking. Room block on 2nd floor.",
     },
   },
@@ -55,7 +57,7 @@ export const weddingConfig = {
           time: "6:00 PM",
           location: "Gibson Inn",
           description: "Join us for drinks and oysters as we kick off the weekend",
-          attire: "Casual",
+          attire: "Semi Formal",
         },
       ],
     },
@@ -69,7 +71,7 @@ export const weddingConfig = {
           time: "TBD",
           location: "Trinity Episcopal Church",
           description: "The main event",
-          attire: "Semi-formal / cocktail",
+          attire: "Summer Cocktail",
         },
         {
           name: "Reception",
@@ -153,18 +155,10 @@ export const weddingConfig = {
   contact: {
     email: "info@jeanvosko.wedding",
   },
-  images: {
-    hero: "png_1",
-    town: ["png_2", "png_3", "png_4"],
-    trinityChurch: "png_5",
-    benedictHall: "png_6",
-    gibsonInn: "png_7",
-    closing: "png_8",
-  },
+  images: weddingImages,
   copy: {
     welcome: "We're so excited to welcome you to Apalachicola, a quiet oyster town on Florida's Forgotten Coast. It's one of our favorite places — unhurried, beautiful, and full of character. We can't wait to share it with you.",
     scheduleNote: "Formal invitations to follow — this is for planning travel",
-    photoNote: "Please note that flash photography is not permitted during the ceremony. We'll have a photographer capturing everything — just be present and enjoy.",
     declineNote: "If you already know you won't be able to attend and prefer not to receive a formal invitation, please let us know.",
     closing: "See you in Apalachicola",
   },

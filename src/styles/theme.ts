@@ -6,10 +6,13 @@ export const theme = {
     navy: '#1e3a5f',
     navyDark: '#152a45',
     navyLight: '#2d4a6f',
-    // Accent - Yellow
-    yellow: '#e8b923',
-    yellowLight: '#f5d56b',
-    yellowMuted: '#d4a91a',
+    // Accent - Yellow (buttercup)
+    yellow: '#F4D35E',
+    yellowLight: '#F7DC7D',
+    yellowMuted: '#E8C84A',
+    // Accent - Mauve (for hero/footer)
+    mauve: '#E0B0C0',
+    mauveDark: '#D4A5A5',
     // Neutrals
     white: '#ffffff',
     cream: '#faf8f5',

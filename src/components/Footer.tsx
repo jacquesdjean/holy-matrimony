@@ -75,7 +75,7 @@ const ClosingText = styled.p`
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.mauve};
   /* Mobile-first */
   font-size: 1.5rem;
 
