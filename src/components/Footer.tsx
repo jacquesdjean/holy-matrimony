@@ -19,17 +19,20 @@ const FooterWrapper = styled.footer`
   }
 `;
 
-const FooterBackground = styled.div`
+interface FooterBackgroundProps {
+  $imageUrl: string;
+}
+
+const FooterBackground = styled.div<FooterBackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.colors.navy},
-    ${({ theme }) => theme.colors.navyDark}
-  );
+  background-image: url(${({ $imageUrl }) => $imageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 
   &::after {
@@ -43,21 +46,6 @@ const FooterBackground = styled.div`
   }
 `;
 
-const ImagePlaceholder = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.muted};
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-`;
 
 const FooterContent = styled.div`
   position: relative;
@@ -105,9 +93,7 @@ const DateText = styled.p`
 export const Footer: React.FC = () => {
   return (
     <FooterWrapper>
-      <FooterBackground>
-        <ImagePlaceholder>[{weddingConfig.images.closing}]</ImagePlaceholder>
-      </FooterBackground>
+      <FooterBackground $imageUrl={weddingConfig.images.closing} />
       <FooterContent>
         <ClosingText>{weddingConfig.copy.closing}</ClosingText>
         <DateText>{weddingConfig.date.short}</DateText>

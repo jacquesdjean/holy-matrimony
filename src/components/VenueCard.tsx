@@ -29,21 +29,19 @@ const Card = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
+interface ImageContainerProps {
+  $imageUrl: string;
+}
+
+const ImageContainer = styled.div<ImageContainerProps>`
   /* Mobile-first */
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.sand} 0%,
-    ${({ theme }) => theme.colors.cream} 100%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.muted};
-  letter-spacing: 0.1em;
+  background-image: url(${({ $imageUrl }) => $imageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: ${({ theme }) => theme.colors.sand};
 
   ${({ theme }) => theme.media.tablet} {
     width: 40%;
@@ -212,7 +210,7 @@ export const VenueCard: React.FC<VenueCardProps> = ({
 }) => {
   return (
     <Card>
-      <ImageContainer>[{image}]</ImageContainer>
+      <ImageContainer $imageUrl={image} />
       <Content>
         <VenueName>{name}</VenueName>
         {role && <VenueRole>{role}</VenueRole>}

@@ -15,17 +15,20 @@ const HeroWrapper = styled.section`
   padding: 2rem 1rem;
 `;
 
-const HeroBackground = styled.div`
+interface HeroBackgroundProps {
+  $imageUrl: string;
+}
+
+const HeroBackground = styled.div<HeroBackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    ${({ theme }) => theme.colors.navy},
-    ${({ theme }) => theme.colors.navyDark}
-  );
+  background-image: url(${({ $imageUrl }) => $imageUrl});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 0;
 
   &::after {
@@ -39,21 +42,6 @@ const HeroBackground = styled.div`
   }
 `;
 
-const ImagePlaceholder = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  color: ${({ theme }) => theme.colors.muted};
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-`;
 
 const HeroContent = styled.div`
   position: relative;
@@ -154,9 +142,7 @@ const ScrollArrow = styled.div`
 export const Hero: React.FC = () => {
   return (
     <HeroWrapper id="home">
-      <HeroBackground>
-        <ImagePlaceholder>[{weddingConfig.images.hero}]</ImagePlaceholder>
-      </HeroBackground>
+      <HeroBackground $imageUrl={weddingConfig.images.hero} />
       <HeroContent>
         <CoupleName>{weddingConfig.couple.name}</CoupleName>
         <DateLocation>
