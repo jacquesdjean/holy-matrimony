@@ -2,7 +2,8 @@ import { weddingImages } from './images';
 
 export const weddingConfig = {
   couple: {
-    name: "Jacques and Caroline",
+    name: "Caroline and Jacques",
+    navName: "Jean-Vosko",
   },
   date: {
     full: "Saturday, September 26, 2026",

@@ -11,8 +11,8 @@ export const theme = {
     yellowLight: '#F7DC7D',
     yellowMuted: '#E8C84A',
     // Accent - Mauve (for hero/footer)
-    mauve: '#E0B0C0',
-    mauveDark: '#D4A5A5',
+    mauve: '#C9B1BC',
+    mauveDark: '#B8A0AA',
     // Neutrals
     white: '#ffffff',
     cream: '#faf8f5',

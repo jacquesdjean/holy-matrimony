@@ -202,7 +202,7 @@ export const Navigation: React.FC = () => {
     <Nav $scrolled={scrolled} $menuOpen={menuOpen}>
       <NavContent>
         <Logo href="#home" $scrolled={scrolled || menuOpen}>
-          {weddingConfig.couple.name}
+          {weddingConfig.couple.navName}
         </Logo>
         <MenuButton
           $scrolled={scrolled || menuOpen}
