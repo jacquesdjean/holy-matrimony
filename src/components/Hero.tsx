@@ -27,9 +27,14 @@ const HeroBackground = styled.div<HeroBackgroundProps>`
   bottom: 0;
   background-image: url(${({ $imageUrl }) => $imageUrl});
   background-size: cover;
-  background-position: center;
+  /* Mobile-first: shift focal point left to show both subjects */
+  background-position: 30% center;
   background-repeat: no-repeat;
   z-index: 0;
+
+  ${({ theme }) => theme.media.tablet} {
+    background-position: center;
+  }
 
   &::after {
     content: '';
