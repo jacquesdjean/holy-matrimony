@@ -4,6 +4,7 @@ import { GlobalStyles } from './styles/GlobalStyles';
 import {
   Hero,
   Navigation,
+  PasswordGate,
   Welcome,
   Schedule,
   Venues,
@@ -18,18 +19,20 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Navigation />
-      <main>
-        <Hero />
-        <Welcome />
-        <Schedule />
-        <Venues />
-        <Travel />
-        <Lodging />
-        <Destination />
-        <Contact />
-        <Footer />
-      </main>
+      <PasswordGate>
+        <Navigation />
+        <main>
+          <Hero />
+          <Welcome />
+          <Schedule />
+          <Venues />
+          <Travel />
+          <Lodging />
+          <Destination />
+          <Contact />
+          <Footer />
+        </main>
+      </PasswordGate>
     </ThemeProvider>
   );
 }

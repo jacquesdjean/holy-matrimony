@@ -2,7 +2,7 @@ import { weddingImages } from './images';
 
 export const weddingConfig = {
   couple: {
-    name: "Caroline and Jacques",
+    name: "Jacques & Caroline",
     navName: "Jean-Vosko",
   },
   date: {
@@ -22,7 +22,7 @@ export const weddingConfig = {
       phone: "(850) 653-9550",
       website: "https://www.trinityapalachicola.org",
       capacity: 200,
-      description: "Historic Episcopal church dating to 1836, one of Florida's oldest",
+      description: "Historic Episcopal church dating to 1836, one of Florida's oldest. Built in New York and sailed down the coast to its current location",
       mapLink: "https://maps.google.com/?q=Trinity+Episcopal+Church+Apalachicola+FL",
       image: weddingImages.trinityChurch,
       guestNotes: [
@@ -69,7 +69,7 @@ export const weddingConfig = {
       events: [
         {
           name: "Ceremony",
-          time: "TBD",
+          time: "Early Evening",
           location: "Trinity Episcopal Church",
           description: "The main event",
           attire: "Summer Cocktail",
@@ -158,7 +158,7 @@ export const weddingConfig = {
   images: weddingImages,
   copy: {
     welcome: "We're so excited to welcome you to Apalachicola, a quiet oyster town on Florida's Forgotten Coast. It's one of our favorite places — unhurried, beautiful, and full of character. We can't wait to share it with you.",
-    scheduleNote: "Formal invitations to follow — this is for planning travel",
+    scheduleNote: "Formal invitations to follow — this rough schedule is for planning travel",
     declineNote: "If you already know you won't be able to attend and prefer not to receive a formal invitation, please let us know.",
     closing: "See you in Apalachicola",
   },

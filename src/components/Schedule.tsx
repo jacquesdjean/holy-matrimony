@@ -31,7 +31,7 @@ const ScheduleNote = styled.p`
 
 export const Schedule: React.FC = () => {
   return (
-    <Section id="schedule" background="cream">
+    <Section id="schedule" background="cream" oysterShells="schedule">
       <ScheduleHeader>
         <SectionTitle>The Weekend</SectionTitle>
         <ScheduleNote>{weddingConfig.copy.scheduleNote}</ScheduleNote>

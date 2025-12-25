@@ -1,15 +1,19 @@
 import styled from 'styled-components';
+import { OysterShellBackground } from './OysterShellBackground';
 
 interface SectionProps {
   id?: string;
   background?: 'white' | 'cream' | 'sand' | 'navy';
   children: React.ReactNode;
   fullWidth?: boolean;
+  oysterShells?: 'schedule' | 'travel';
 }
 
 const SectionWrapper = styled.section<{ $background: string }>`
   /* Mobile-first: base padding */
   padding: 3rem 1rem;
+  position: relative;
+  overflow: hidden;
   background-color: ${({ theme, $background }) => {
     switch ($background) {
       case 'cream':
@@ -51,9 +55,11 @@ export const Section: React.FC<SectionProps> = ({
   background = 'white',
   children,
   fullWidth = false,
+  oysterShells,
 }) => {
   return (
     <SectionWrapper id={id} $background={background}>
+      {oysterShells && <OysterShellBackground variant={oysterShells} />}
       <SectionContent $fullWidth={fullWidth}>{children}</SectionContent>
     </SectionWrapper>
   );

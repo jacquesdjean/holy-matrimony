@@ -63,7 +63,7 @@ const ClosingText = styled.p`
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-  color: ${({ theme }) => theme.colors.mauve};
+  color: ${({ theme }) => theme.colors.yellow};
   /* Mobile-first */
   font-size: 1.5rem;
 
@@ -81,7 +81,7 @@ const DateText = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.light};
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.offWhite};
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   font-size: 1rem;
 

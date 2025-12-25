@@ -15,6 +15,7 @@ export const theme = {
     mauveDark: '#B8A0AA',
     // Neutrals
     white: '#ffffff',
+    offWhite: '#f5f3f0',
     cream: '#faf8f5',
     sand: '#e8e4de',
     charcoal: '#2c2c2c',

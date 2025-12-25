@@ -27,10 +27,15 @@ const HeroBackground = styled.div<HeroBackgroundProps>`
   bottom: 0;
   background-image: url(${({ $imageUrl }) => $imageUrl});
   background-size: cover;
-  /* Mobile-first: shift focal point left to show both subjects */
-  background-position: 30% center;
+  /* Mobile-first: shift focal point to center both subjects */
+  background-position: 45% center;
   background-repeat: no-repeat;
   z-index: 0;
+
+  /* Extra small phones need more adjustment */
+  @media (max-width: 380px) {
+    background-position: 42% center;
+  }
 
   ${({ theme }) => theme.media.tablet} {
     background-position: center;
@@ -59,7 +64,7 @@ const CoupleName = styled.h1`
   font-family: ${({ theme }) => theme.fonts.heading};
   font-weight: ${({ theme }) => theme.fontWeights.light};
   letter-spacing: 0.1em;
-  color: ${({ theme }) => theme.colors.mauve};
+  color: ${({ theme }) => theme.colors.yellow};
   margin-bottom: ${({ theme }) => theme.spacing.md};
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   /* Mobile-first: base size */
@@ -81,7 +86,7 @@ const DateLocation = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.light};
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.yellowLight};
+  color: ${({ theme }) => theme.colors.offWhite};
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   /* Mobile-first */
   font-size: 1rem;
@@ -108,7 +113,7 @@ const ScrollIndicator = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
   opacity: 0.8;
-  color: ${({ theme }) => theme.colors.yellow};
+  color: ${({ theme }) => theme.colors.offWhite};
   /* CSS animation - better performance */
   animation: bounce 2s infinite;
 
@@ -138,8 +143,8 @@ const ScrollText = styled.span`
 const ScrollArrow = styled.div`
   width: 20px;
   height: 20px;
-  border-right: 2px solid ${({ theme }) => theme.colors.yellow};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.yellow};
+  border-right: 2px solid ${({ theme }) => theme.colors.offWhite};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.offWhite};
   transform: rotate(45deg);
   opacity: 0.8;
 `;

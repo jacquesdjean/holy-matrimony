@@ -147,7 +147,7 @@ export const Travel: React.FC = () => {
   const { airports, shuttles, drivingFromTexas } = weddingConfig.travel;
 
   return (
-    <Section id="travel" background="cream">
+    <Section id="travel" background="cream" oysterShells="travel">
       <SectionTitle>Travel</SectionTitle>
 
       <Subtitle>Getting There by Air</Subtitle>
