@@ -14,16 +14,16 @@ const float = keyframes`
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
   }
 `;
 
 const sealGlow = keyframes`
   0%, 100% {
-    box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4), 0 0 20px rgba(244, 211, 94, 0.2);
+    box-shadow: 0 3px 12px rgba(180, 140, 100, 0.35), 0 0 15px rgba(200, 160, 110, 0.15);
   }
   50% {
-    box-shadow: 0 4px 20px rgba(212, 165, 116, 0.6), 0 0 30px rgba(244, 211, 94, 0.3);
+    box-shadow: 0 4px 18px rgba(180, 140, 100, 0.5), 0 0 22px rgba(200, 160, 110, 0.2);
   }
 `;
 
@@ -107,7 +107,7 @@ const GateWrapper = styled.div<{ $isUnlocked: boolean }>`
   right: 0;
   bottom: 0;
   z-index: 10000;
-  background: radial-gradient(ellipse at 50% 30%, #1e3a5f 0%, #152a45 60%, #0d1a2d 100%);
+  background: linear-gradient(180deg, #1a3152 0%, #152a45 40%, #0f1f33 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,8 +118,8 @@ const GateWrapper = styled.div<{ $isUnlocked: boolean }>`
   ${({ $isUnlocked }) =>
     $isUnlocked &&
     css`
-      animation: ${fadeOut} 1s ease-out forwards;
-      animation-delay: 1.8s;
+      animation: ${fadeOut} 1.2s ease-out forwards;
+      animation-delay: 1.6s;
     `}
 `;
 
@@ -135,9 +135,9 @@ const Star = styled.div<{ $x: number; $y: number; $size: number; $delay: number 
   top: ${({ $y }) => $y}%;
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
-  animation: ${twinkle} ${({ $delay }) => 2 + $delay}s ease-in-out infinite;
+  animation: ${twinkle} ${({ $delay }) => 3 + $delay}s ease-in-out infinite;
   animation-delay: ${({ $delay }) => $delay}s;
 `;
 
@@ -150,23 +150,24 @@ const ContentWrapper = styled.div<{ $isVisible: boolean }>`
 const Title = styled.h1`
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.2em;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.25em;
+  margin-bottom: 2.5rem;
   text-transform: uppercase;
 
   @media (min-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
   }
 `;
 
 const EnvelopeScene = styled.div`
-  perspective: 800px;
+  perspective: 1000px;
 `;
 
 const EnvelopeContainer = styled.div<{ $isShaking: boolean; $isOpening: boolean }>`
-  animation: ${({ $isOpening }) => ($isOpening ? 'none' : float)} 4s ease-in-out infinite;
+  animation: ${({ $isOpening }) => ($isOpening ? 'none' : float)} 5s ease-in-out infinite;
 
   ${({ $isShaking }) =>
     $isShaking &&
@@ -177,13 +178,13 @@ const EnvelopeContainer = styled.div<{ $isShaking: boolean; $isOpening: boolean 
 
 const Envelope = styled.div`
   position: relative;
-  width: 280px;
-  height: 180px;
+  width: 260px;
+  height: 170px;
   transform-style: preserve-3d;
 
   @media (min-width: 768px) {
-    width: 340px;
-    height: 220px;
+    width: 320px;
+    height: 210px;
   }
 `;
 
@@ -191,18 +192,21 @@ const EnvelopeBack = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #f8f6f2 0%, #ebe7e0 100%);
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(180deg, #faf8f5 0%, #f0ede8 100%);
+  border-radius: 6px;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 `;
 
 const EnvelopeFront = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60%;
-  background: linear-gradient(180deg, #f5f2ed 0%, #e8e4dc 100%);
-  border-radius: 0 0 8px 8px;
+  height: 58%;
+  background: linear-gradient(180deg, #f7f5f2 0%, #ebe8e2 100%);
+  border-radius: 0 0 6px 6px;
   z-index: 5;
 
   &::before {
@@ -212,7 +216,7 @@ const EnvelopeFront = styled.div`
     left: 0;
     right: 0;
     height: 1px;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.06);
   }
 `;
 
@@ -237,7 +241,7 @@ const FlapOuter = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #ebe7e0 0%, #ddd8cf 100%);
+  background: linear-gradient(180deg, #f0ede8 0%, #e4e0d9 100%);
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   backface-visibility: hidden;
 `;
@@ -246,7 +250,7 @@ const FlapInner = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #1e3a5f 0%, #2a4a6e 100%);
+  background: linear-gradient(180deg, #1a3152 0%, #243d5c 100%);
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform: rotateX(180deg);
   backface-visibility: hidden;
@@ -254,19 +258,19 @@ const FlapInner = styled.div`
 
 const Letter = styled.div<{ $isOpen: boolean }>`
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 70%;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 82%;
+  height: 72%;
+  background: linear-gradient(180deg, #ffffff 0%, #fdfcfb 100%);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   z-index: 2;
   padding: 1rem;
 
@@ -280,25 +284,25 @@ const Letter = styled.div<{ $isOpen: boolean }>`
 
 const LetterNames = styled.span`
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.25rem;
-  color: #1e3a5f;
+  font-size: 1.15rem;
+  color: #1a3152;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 `;
 
 const LetterDate = styled.span`
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  color: #8b7355;
-  letter-spacing: 0.15em;
+  font-size: 0.6rem;
+  color: #9a8b7a;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 
   @media (min-width: 768px) {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -307,87 +311,93 @@ const WaxSeal = styled.div<{ $isOpen: boolean }>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(ellipse at 35% 35%, #d4a574 0%, #b8834a 50%, #8b6340 100%);
+  width: 54px;
+  height: 54px;
+  background: radial-gradient(ellipse at 30% 30%, #c49a6c 0%, #a67c52 40%, #8b6340 100%);
   border-radius: 50%;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)} ${({ $isOpen }) => ($isOpen ? '0.5s' : '2.5s')} ${({ $isOpen }) => ($isOpen ? 'ease-out forwards' : 'ease-in-out infinite')};
+  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)} ${({ $isOpen }) => ($isOpen ? '0.5s' : '3s')} ${({ $isOpen }) => ($isOpen ? 'ease-out forwards' : 'ease-in-out infinite')};
 
   @media (min-width: 768px) {
-    width: 70px;
-    height: 70px;
+    width: 62px;
+    height: 62px;
   }
 `;
 
 const SealText = styled.span`
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #faf8f5;
   font-weight: 500;
   letter-spacing: 0.02em;
 
   @media (min-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 `;
 
 const FormSection = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   z-index: 50;
+
+  @media (min-width: 768px) {
+    margin-top: 3.5rem;
+  }
 `;
 
 const PasswordInput = styled.input<{ $hasError: boolean }>`
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid ${({ $hasError }) => ($hasError ? '#ff7070' : 'rgba(255, 255, 255, 0.25)')};
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid ${({ $hasError }) => ($hasError ? 'rgba(255, 120, 120, 0.6)' : 'rgba(255, 255, 255, 0.18)')};
+  border-radius: 6px;
+  padding: 0.9rem 1.25rem;
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #fff;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
   text-align: center;
-  width: 280px;
+  width: 240px;
   outline: none;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.08em;
     text-transform: none;
+    font-size: 0.85rem;
   }
 
   &:focus {
-    border-color: ${({ $hasError }) => ($hasError ? '#ff7070' : 'rgba(244, 211, 94, 0.7)')};
-    background: rgba(255, 255, 255, 0.15);
+    border-color: ${({ $hasError }) => ($hasError ? 'rgba(255, 120, 120, 0.6)' : 'rgba(244, 211, 94, 0.5)')};
+    background: rgba(255, 255, 255, 0.12);
   }
 
   @media (min-width: 768px) {
-    width: 320px;
+    width: 280px;
+    padding: 1rem 1.5rem;
   }
 `;
 
 const SubmitButton = styled.button`
-  background: linear-gradient(135deg, #F4D35E 0%, #d4b445 100%);
+  background: linear-gradient(135deg, #e8c84a 0%, #d4b445 100%);
   border: none;
-  border-radius: 8px;
-  padding: 1rem 2.5rem;
+  border-radius: 6px;
+  padding: 0.85rem 2rem;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #1e3a5f;
-  letter-spacing: 0.15em;
+  color: #1a3152;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
 
@@ -395,33 +405,39 @@ const SubmitButton = styled.button`
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     background-size: 200% 100%;
-    animation: ${shimmer} 2s ease-in-out infinite;
+    animation: ${shimmer} 2.5s ease-in-out infinite;
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(244, 211, 94, 0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(244, 211, 94, 0.25);
   }
 
   &:active {
     transform: translateY(0);
   }
+
+  @media (min-width: 768px) {
+    padding: 0.9rem 2.25rem;
+    font-size: 0.75rem;
+  }
 `;
 
 const ErrorText = styled.p`
-  color: #ff8080;
+  color: rgba(255, 130, 130, 0.9);
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 `;
 
 const Hint = styled.p`
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.3);
   font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  margin-top: 1.5rem;
-  letter-spacing: 0.05em;
+  font-size: 0.65rem;
+  margin-top: 2rem;
+  letter-spacing: 0.04em;
 `;
 
 const ConfettiContainer = styled.div<{ $active: boolean }>`
@@ -435,29 +451,31 @@ const Confetti = styled.div<{ $x: number; $color: string; $delay: number; $durat
   position: absolute;
   left: ${({ $x }) => $x}%;
   top: 0;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: ${({ $color }) => $color};
+  border-radius: 1px;
+  opacity: 0.85;
   animation: ${confettiFall} ${({ $duration }) => $duration}s linear forwards;
   animation-delay: ${({ $delay }) => $delay}s;
 `;
 
-// Generate background stars
-const stars = Array.from({ length: 40 }, (_, i) => ({
+// Generate background stars - fewer, more subtle
+const stars = Array.from({ length: 30 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
-  size: Math.random() * 2 + 1,
-  delay: Math.random() * 3,
+  size: Math.random() * 1.5 + 0.5,
+  delay: Math.random() * 4,
 }));
 
-// Generate confetti
-const confettiPieces = Array.from({ length: 50 }, (_, i) => ({
+// Generate confetti - more elegant, fewer pieces
+const confettiPieces = Array.from({ length: 35 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
-  color: ['#F4D35E', '#fff', '#E8C84A', '#C9B1BC', '#ffd700'][Math.floor(Math.random() * 5)],
-  delay: Math.random() * 0.5,
-  duration: Math.random() * 2 + 2.5,
+  color: ['#e8c84a', '#fff', '#d4b445', '#f5f2ed', '#c9b1bc'][Math.floor(Math.random() * 5)],
+  delay: Math.random() * 0.4,
+  duration: Math.random() * 2 + 3,
 }));
 
 export const PasswordGate: React.FC<PasswordGateProps> = ({ children }) => {
