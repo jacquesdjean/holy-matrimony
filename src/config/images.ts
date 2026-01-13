@@ -9,6 +9,12 @@ export const weddingImages = {
 
   // Town/destination photos (sliding banner)
   town: [
+    `${IMAGE_BASE_PATH}/png_2.png`,
+    `${IMAGE_BASE_PATH}/png_3.png`,
+    `${IMAGE_BASE_PATH}/png_4.png`,
+    `${IMAGE_BASE_PATH}/png_9.png`,
+    `${IMAGE_BASE_PATH}/png_10.png`,
+    `${IMAGE_BASE_PATH}/png_11.png`,
     `${IMAGE_BASE_PATH}/png_12.png`,
     `${IMAGE_BASE_PATH}/png_13.png`,
     `${IMAGE_BASE_PATH}/png_14.png`,
