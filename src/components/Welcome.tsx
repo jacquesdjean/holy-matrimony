@@ -159,7 +159,7 @@ export const Welcome: React.FC = () => {
         <SliderTrack $currentIndex={currentIndex} $totalSlides={images.length}>
           {images.map((image, index) => (
             <Slide key={index}>
-              <SlideImage src={image} alt={`Apalachicola ${index + 1}`} />
+              <SlideImage src={image} alt={`Apalachicola ${index + 1}`} loading="eager" />
             </Slide>
           ))}
         </SliderTrack>
