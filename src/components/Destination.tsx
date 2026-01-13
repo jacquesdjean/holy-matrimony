@@ -4,29 +4,16 @@ import { weddingConfig } from '../config/weddingConfig';
 
 const DestinationHeader = styled.div`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 
   ${({ theme }) => theme.media.tablet} {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 `;
 
 const SectionTitle = styled.h2`
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: ${({ theme }) => theme.colors.navy};
-`;
-
-const Intro = styled.p`
-  font-size: 1rem;
-  line-height: 1.8;
-  color: ${({ theme }) => theme.colors.muted};
-  max-width: 100%;
-  margin: 0 auto;
-
-  ${({ theme }) => theme.media.tablet} {
-    font-size: 1.125rem;
-    max-width: 600px;
-  }
 `;
 
 const ContentGrid = styled.div`
@@ -137,7 +124,6 @@ export const Destination: React.FC = () => {
     <Section id="destination" background="cream">
       <DestinationHeader>
         <SectionTitle>About Apalachicola</SectionTitle>
-        <Intro>{destination.intro}</Intro>
       </DestinationHeader>
 
       <ContentGrid>
