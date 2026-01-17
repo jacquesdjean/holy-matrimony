@@ -8,7 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "images": "./scripts/images.sh",
+    "images:list": "./scripts/images.sh list",
+    "images:fix": "./scripts/images.sh fix",
+    "images:validate": "./scripts/images.sh validate",
+    "go": "./scripts/images.sh workflow"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.36",
