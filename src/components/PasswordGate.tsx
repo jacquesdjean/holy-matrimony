@@ -62,7 +62,7 @@ const flapHint = keyframes`
     transform: rotateX(0deg);
   }
   50% {
-    transform: rotateX(-3deg);
+    transform: rotateX(-2deg);
   }
 `;
 
@@ -79,15 +79,15 @@ const sealGlow = keyframes`
 
 const sealBreak = keyframes`
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
     opacity: 1;
   }
-  50% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0.8;
+  30% {
+    transform: translate(-50%, -50%) scale(1.15) rotate(5deg);
+    opacity: 0.9;
   }
   100% {
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0) rotate(15deg);
     opacity: 0;
   }
 `;
@@ -96,18 +96,28 @@ const flapOpen = keyframes`
   0% {
     transform: rotateX(0deg);
   }
+  40% {
+    transform: rotateX(-100deg);
+  }
+  70% {
+    transform: rotateX(-160deg);
+  }
   100% {
-    transform: rotateX(-170deg);
+    transform: rotateX(-175deg);
   }
 `;
 
 const letterEmerge = keyframes`
   0% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-50%) translateY(-120px) scale(1.15);
     opacity: 1;
   }
   100% {
-    transform: translateX(-50%) translateY(-180px) scale(1.3);
+    transform: translateX(-50%) translateY(-180px) scale(1.25);
     opacity: 0;
   }
 `;
@@ -226,12 +236,13 @@ const EnvelopeContainer = styled.div<{ $isShaking: boolean; $isOpening: boolean 
     `}
 `;
 
-const Envelope = styled.div`
+const Envelope = styled.div<{ $isOpening?: boolean }>`
   position: relative;
   width: 260px;
   height: 170px;
   transform-style: preserve-3d;
-  animation: ${breathe} 3s ease-in-out infinite;
+  animation: ${({ $isOpening }) => ($isOpening ? 'none' : breathe)} 3s ease-in-out infinite;
+  will-change: transform;
 
   @media (min-width: 768px) {
     width: 320px;
@@ -239,7 +250,7 @@ const Envelope = styled.div`
   }
 `;
 
-const EnvelopeBack = styled.div`
+const EnvelopeBack = styled.div<{ $isOpening?: boolean }>`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -252,8 +263,12 @@ const EnvelopeBack = styled.div`
     ),
     linear-gradient(180deg, #faf8f5 0%, #f0ede8 100%);
   background-size: 200% 200%, 100% 100%;
-  border-radius: 6px;
-  animation: ${shadowPulse} 4s ease-in-out infinite, ${paperShimmer} 6s ease-in-out infinite;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.12);
+  animation: ${({ $isOpening }) => ($isOpening ? 'none' : paperShimmer)} 6s ease-in-out infinite;
 `;
 
 const EnvelopeFront = styled.div`
@@ -262,7 +277,9 @@ const EnvelopeFront = styled.div`
   width: 100%;
   height: 58%;
   background: linear-gradient(180deg, #f7f5f2 0%, #ebe8e2 100%);
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: none;
   z-index: 5;
 
   &::before {
@@ -272,7 +289,7 @@ const EnvelopeFront = styled.div`
     left: 0;
     right: 0;
     height: 1px;
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -285,7 +302,9 @@ const EnvelopeFlap = styled.div<{ $isOpen: boolean }>`
   transform-origin: top center;
   transform-style: preserve-3d;
   z-index: 10;
-  animation: ${({ $isOpen }) => ($isOpen ? flapOpen : flapHint)} ${({ $isOpen }) => ($isOpen ? '0.8s ease-out forwards' : '3.5s ease-in-out infinite')};
+  will-change: transform;
+  animation: ${({ $isOpen }) => ($isOpen ? flapOpen : flapHint)}
+    ${({ $isOpen }) => ($isOpen ? '1s cubic-bezier(0.4, 0, 0.2, 1) forwards' : '4s ease-in-out infinite')};
 `;
 
 const FlapOuter = styled.div`
@@ -295,6 +314,7 @@ const FlapOuter = styled.div`
   background: linear-gradient(180deg, #f0ede8 0%, #e4e0d9 100%);
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   backface-visibility: hidden;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.1));
 `;
 
 const FlapInner = styled.div`
@@ -316,6 +336,7 @@ const Letter = styled.div<{ $isOpen: boolean }>`
   height: 72%;
   background: linear-gradient(180deg, #ffffff 0%, #fdfcfb 100%);
   border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
@@ -324,12 +345,13 @@ const Letter = styled.div<{ $isOpen: boolean }>`
   gap: 0.4rem;
   z-index: 2;
   padding: 1rem;
+  will-change: transform, opacity;
 
   ${({ $isOpen }) =>
     $isOpen &&
     css`
-      animation: ${letterEmerge} 1.2s ease-out forwards;
-      animation-delay: 0.4s;
+      animation: ${letterEmerge} 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.5s;
     `}
 `;
 
@@ -365,12 +387,15 @@ const WaxSeal = styled.div<{ $isOpen: boolean }>`
   height: 54px;
   background: radial-gradient(ellipse at 30% 30%, #c49a6c 0%, #a67c52 40%, #8b6340 100%);
   border-radius: 50%;
+  border: 1px solid rgba(139, 99, 64, 0.3);
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: translate(-50%, -50%);
-  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)} ${({ $isOpen }) => ($isOpen ? '0.5s' : '2.5s')} ${({ $isOpen }) => ($isOpen ? 'ease-out forwards' : 'ease-in-out infinite')};
+  will-change: transform, opacity;
+  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)}
+    ${({ $isOpen }) => ($isOpen ? '0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards' : '2.5s ease-in-out infinite')};
 
   @media (min-width: 768px) {
     width: 62px;
@@ -601,8 +626,8 @@ export const PasswordGate: React.FC<PasswordGateProps> = ({ children }) => {
 
         <EnvelopeScene>
           <EnvelopeContainer $isShaking={isShaking} $isOpening={isOpening}>
-            <Envelope>
-              <EnvelopeBack />
+            <Envelope $isOpening={isOpening}>
+              <EnvelopeBack $isOpening={isOpening} />
               <Letter $isOpen={isOpening}>
                 <LetterNames>Jacques & Caroline</LetterNames>
                 <LetterDate>September 26, 2026</LetterDate>
