@@ -11,19 +11,69 @@ interface PasswordGateProps {
 // Keyframe animations
 const float = keyframes`
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(0.5deg);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-10px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-0.5deg);
+  }
+`;
+
+const breathe = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.008);
+  }
+`;
+
+const shadowPulse = keyframes`
+  0%, 100% {
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.25),
+      0 10px 20px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow:
+      0 35px 60px rgba(0, 0, 0, 0.3),
+      0 15px 25px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+`;
+
+const paperShimmer = keyframes`
+  0%, 100% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+`;
+
+const flapHint = keyframes`
+  0%, 100% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(-3deg);
   }
 `;
 
 const sealGlow = keyframes`
   0%, 100% {
     box-shadow: 0 3px 12px rgba(180, 140, 100, 0.35), 0 0 15px rgba(200, 160, 110, 0.15);
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
   }
   50% {
-    box-shadow: 0 4px 18px rgba(180, 140, 100, 0.5), 0 0 22px rgba(200, 160, 110, 0.2);
+    box-shadow: 0 5px 20px rgba(180, 140, 100, 0.55), 0 0 28px rgba(200, 160, 110, 0.25);
+    transform: translate(-50%, -50%) scale(1.03) rotate(2deg);
   }
 `;
 
@@ -167,7 +217,7 @@ const EnvelopeScene = styled.div`
 `;
 
 const EnvelopeContainer = styled.div<{ $isShaking: boolean; $isOpening: boolean }>`
-  animation: ${({ $isOpening }) => ($isOpening ? 'none' : float)} 5s ease-in-out infinite;
+  animation: ${({ $isOpening }) => ($isOpening ? 'none' : float)} 4s ease-in-out infinite;
 
   ${({ $isShaking }) =>
     $isShaking &&
@@ -181,6 +231,7 @@ const Envelope = styled.div`
   width: 260px;
   height: 170px;
   transform-style: preserve-3d;
+  animation: ${breathe} 3s ease-in-out infinite;
 
   @media (min-width: 768px) {
     width: 320px;
@@ -192,12 +243,17 @@ const EnvelopeBack = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #faf8f5 0%, #f0ede8 100%);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(180deg, #faf8f5 0%, #f0ede8 100%);
+  background-size: 200% 200%, 100% 100%;
   border-radius: 6px;
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.25),
-    0 10px 20px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  animation: ${shadowPulse} 4s ease-in-out infinite, ${paperShimmer} 6s ease-in-out infinite;
 `;
 
 const EnvelopeFront = styled.div`
@@ -229,12 +285,7 @@ const EnvelopeFlap = styled.div<{ $isOpen: boolean }>`
   transform-origin: top center;
   transform-style: preserve-3d;
   z-index: 10;
-
-  ${({ $isOpen }) =>
-    $isOpen &&
-    css`
-      animation: ${flapOpen} 0.8s ease-out forwards;
-    `}
+  animation: ${({ $isOpen }) => ($isOpen ? flapOpen : flapHint)} ${({ $isOpen }) => ($isOpen ? '0.8s ease-out forwards' : '3.5s ease-in-out infinite')};
 `;
 
 const FlapOuter = styled.div`
@@ -310,7 +361,6 @@ const WaxSeal = styled.div<{ $isOpen: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 54px;
   height: 54px;
   background: radial-gradient(ellipse at 30% 30%, #c49a6c 0%, #a67c52 40%, #8b6340 100%);
@@ -319,7 +369,8 @@ const WaxSeal = styled.div<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)} ${({ $isOpen }) => ($isOpen ? '0.5s' : '3s')} ${({ $isOpen }) => ($isOpen ? 'ease-out forwards' : 'ease-in-out infinite')};
+  transform: translate(-50%, -50%);
+  animation: ${({ $isOpen }) => ($isOpen ? sealBreak : sealGlow)} ${({ $isOpen }) => ($isOpen ? '0.5s' : '2.5s')} ${({ $isOpen }) => ($isOpen ? 'ease-out forwards' : 'ease-in-out infinite')};
 
   @media (min-width: 768px) {
     width: 62px;
