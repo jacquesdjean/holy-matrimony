@@ -360,7 +360,7 @@ const PasswordInput = styled.input<{ $hasError: boolean }>`
   border-radius: 6px;
   padding: 0.9rem 1.25rem;
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #fff;
   letter-spacing: 0.2em;
   text-align: center;
