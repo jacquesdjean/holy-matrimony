@@ -119,24 +119,6 @@ const ShuttleInfo = styled.p`
   margin-bottom: 1rem;
 `;
 
-const ShuttleSchedule = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-
-  ${({ theme }) => theme.media.tablet} {
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-  }
-`;
-
-const ScheduleItem = styled.span`
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.charcoal};
-`;
-
 const ShuttleNote = styled.p`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.muted};
@@ -163,7 +145,7 @@ export const Travel: React.FC = () => {
           />
         ))}
       </AirportsGrid>
-      <Note>Rental cars available at both airports. We recommend flying into Panama City (ECP). Tallahassee is also an option but not as convenient.</Note>
+      <Note>Rental cars available at both airports. We recommend flying into Tallahassee (TLH). Panama City is also an option but a longer drive.</Note>
 
       <ShuttleSection>
         <ShuttleTitleWrapper>
@@ -177,12 +159,7 @@ export const Travel: React.FC = () => {
           </ShuttleIcon>
           <ShuttleTitle>Shuttle Service</ShuttleTitle>
         </ShuttleTitleWrapper>
-        <ShuttleInfo>We're arranging shuttles from ECP (Panama City) to the Gibson Inn for guests without cars.</ShuttleInfo>
-        <ShuttleSchedule>
-          <ScheduleItem>Friday: {shuttles.schedule.friday} shuttles</ScheduleItem>
-          <ScheduleItem>Saturday: {shuttles.schedule.saturday} shuttle</ScheduleItem>
-          <ScheduleItem>Sunday: {shuttles.schedule.sunday} shuttle</ScheduleItem>
-        </ShuttleSchedule>
+        <ShuttleInfo>We're planning to rent a sprinter van and run a few trips from Tallahassee (TLH) to the Gibson Inn for guests without cars.</ShuttleInfo>
         <ShuttleNote>{shuttles.note}</ShuttleNote>
       </ShuttleSection>
 

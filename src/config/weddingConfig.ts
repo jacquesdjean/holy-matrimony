@@ -98,12 +98,11 @@ export const weddingConfig = {
   ],
   travel: {
     airports: [
-      { code: "ECP", name: "Panama City", distance: "~65 miles", driveTime: "1.25 hours", recommended: true },
-      { code: "TLH", name: "Tallahassee", distance: "~80 miles", driveTime: "1.5 hours", recommended: false },
+      { code: "TLH", name: "Tallahassee", distance: "~65 miles", driveTime: "1.25 hours", recommended: true },
+      { code: "ECP", name: "Panama City", distance: "~80 miles", driveTime: "1.5 hours", recommended: false },
     ],
     shuttles: {
       available: true,
-      schedule: { friday: 2, saturday: 1, sunday: 1 },
       note: "Signup details coming soon",
     },
     drivingFromTexas: {
