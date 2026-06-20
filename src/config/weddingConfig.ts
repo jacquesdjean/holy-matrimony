@@ -155,7 +155,7 @@ export const weddingConfig = {
     email: "info@jeanvosko.wedding",
   },
   rsvp: {
-    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSep1boi64lhlp13qh-WKX0kLJSuPHg_gf-iYPkTQRiv8SPQZw/viewform?usp=header",
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSep1boi64lhIp13qh-WKX0kLJSuPHg_gf-iYPkTQRiv8SPQZw/viewform?usp=dialog",
     deadline: "August 1, 2026",
   },
   registry: {
