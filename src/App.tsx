@@ -11,6 +11,7 @@ import {
   Travel,
   Lodging,
   Destination,
+  Rsvp,
   Contact,
   Footer,
 } from './components';
@@ -29,6 +30,7 @@ function App() {
           <Travel />
           <Lodging />
           <Destination />
+          <Rsvp />
           <Contact />
           <Footer />
         </main>

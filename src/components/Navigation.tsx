@@ -178,6 +178,7 @@ const navItems = [
   { label: 'Venues', href: '#venues' },
   { label: 'Travel', href: '#travel' },
   { label: 'Stay', href: '#lodging' },
+  { label: 'RSVP', href: '#rsvp' },
   { label: 'Contact', href: '#contact' },
 ];
 

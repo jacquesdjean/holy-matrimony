@@ -14,5 +14,6 @@ export { Lodging } from './Lodging';
 export { LodgingCard } from './LodgingCard';
 export { OysterShellBackground } from './OysterShellBackground';
 export { Destination } from './Destination';
+export { Rsvp } from './Rsvp';
 export { Contact } from './Contact';
 export { Footer } from './Footer';

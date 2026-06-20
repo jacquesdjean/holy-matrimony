@@ -167,6 +167,7 @@ export const weddingConfig = {
     welcome: "We're so excited to welcome you to Apalachicola, a quiet oyster town on Florida's Forgotten Coast. It's one of our favorite places — unhurried, beautiful, and full of character. We can't wait to share it with you.",
     scheduleNote: "Formal invitations to follow — this rough schedule is for planning travel",
     declineNote: "If you already know you won't be able to attend and prefer not to receive a formal invitation, please let us know.",
+    giftNote: "Your presence is the greatest gift of all. If you'd like to give something more, we've registered a few things to help us start this next chapter.",
     closing: "See you in Apalachicola",
   },
 };
