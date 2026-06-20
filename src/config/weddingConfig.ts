@@ -55,7 +55,7 @@ export const weddingConfig = {
       events: [
         {
           name: "Welcome Reception",
-          time: "6:00 PM",
+          time: "7:00 PM",
           location: "Gibson Inn",
           description: "Join us for drinks and oysters as we kick off the weekend",
           attire: "Semi Formal",
@@ -103,7 +103,7 @@ export const weddingConfig = {
     ],
     shuttles: {
       available: true,
-      note: "Signup details coming soon",
+      returnTime: "Return shuttles to the airports begin at 11:00 AM on Sunday, after the farewell brunch.",
     },
     drivingFromTexas: {
       intro: "For our Texas guests, we recommend breaking up the drive with a stop in New Orleans.",
@@ -153,6 +153,14 @@ export const weddingConfig = {
   },
   contact: {
     email: "info@jeanvosko.wedding",
+  },
+  rsvp: {
+    formLink: "https://docs.google.com/forms/d/e/1FAIpQLSep1boi64lhlp13qh-WKX0kLJSuPHg_gf-iYPkTQRiv8SPQZw/viewform?usp=header",
+    deadline: "August 1, 2026",
+  },
+  registry: {
+    link: "https://registry.theknot.com/caroline-vosko-jacques-jean-september-2026-fl/77450084",
+    host: "The Knot",
   },
   images: weddingImages,
   copy: {

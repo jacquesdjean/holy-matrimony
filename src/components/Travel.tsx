@@ -119,10 +119,33 @@ const ShuttleInfo = styled.p`
   margin-bottom: 1rem;
 `;
 
+const ShuttleReturn = styled.p`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.muted};
+  margin-bottom: 1rem;
+`;
+
 const ShuttleNote = styled.p`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.muted};
   font-style: italic;
+`;
+
+const ShuttleEmailLink = styled.a`
+  color: ${({ theme }) => theme.colors.navy};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  text-decoration: underline;
+  -webkit-tap-highlight-color: transparent;
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.navyDark};
+    }
+  }
 `;
 
 export const Travel: React.FC = () => {
@@ -145,7 +168,7 @@ export const Travel: React.FC = () => {
           />
         ))}
       </AirportsGrid>
-      <Note>Rental cars available at both airports. We recommend flying into Tallahassee (TLH). Panama City is also an option but a longer drive.</Note>
+      <Note>Rental cars are available at both airports, and we're offering shuttles from each. Tallahassee (TLH) is the closer, easier option; Panama City (ECP) works well too with a slightly longer drive.</Note>
 
       <ShuttleSection>
         <ShuttleTitleWrapper>
@@ -159,8 +182,15 @@ export const Travel: React.FC = () => {
           </ShuttleIcon>
           <ShuttleTitle>Shuttle Service</ShuttleTitle>
         </ShuttleTitleWrapper>
-        <ShuttleInfo>We're planning to rent a sprinter van and run a few trips from Tallahassee (TLH) to the Gibson Inn for guests without cars.</ShuttleInfo>
-        <ShuttleNote>{shuttles.note}</ShuttleNote>
+        <ShuttleInfo>We're renting a sprinter van for the weekend and offering pre-reserved rides between the airports — Tallahassee (TLH) and Panama City (ECP) — and the Gibson Inn for guests without a car.</ShuttleInfo>
+        <ShuttleReturn>{shuttles.returnTime}</ShuttleReturn>
+        <ShuttleNote>
+          Email{' '}
+          <ShuttleEmailLink href={`mailto:${weddingConfig.contact.email}`}>
+            {weddingConfig.contact.email}
+          </ShuttleEmailLink>{' '}
+          with your flight times and pickup or departure needs, and we'll save you a seat.
+        </ShuttleNote>
       </ShuttleSection>
 
       <DrivingRoute
