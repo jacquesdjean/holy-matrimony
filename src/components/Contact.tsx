@@ -57,19 +57,6 @@ const EmailLink = styled.a`
   }
 `;
 
-const DeclineNote = styled.p`
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.muted};
-  font-style: italic;
-  max-width: 100%;
-  margin: 0 auto;
-  line-height: 1.6;
-
-  ${({ theme }) => theme.media.tablet} {
-    max-width: 400px;
-  }
-`;
-
 export const Contact: React.FC = () => {
   return (
     <Section id="contact" background="cream">
@@ -79,7 +66,6 @@ export const Contact: React.FC = () => {
         <EmailLink href={`mailto:${weddingConfig.contact.email}`}>
           {weddingConfig.contact.email}
         </EmailLink>
-        <DeclineNote>{weddingConfig.copy.declineNote}</DeclineNote>
       </ContactContent>
     </Section>
   );
