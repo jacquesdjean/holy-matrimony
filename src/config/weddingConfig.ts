@@ -38,7 +38,7 @@ export const weddingConfig = {
     },
     hub: {
       name: "Gibson Inn",
-      role: "Welcome Party & Farewell Brunch",
+      role: "Welcome Party",
       address: "51 Avenue C, Apalachicola, FL 32320",
       phone: "(850) 653-2191",
       website: "https://www.gibsoninn.com",
@@ -82,19 +82,6 @@ export const weddingConfig = {
         },
       ],
     },
-    {
-      day: "Sunday, September 27",
-      theme: "Farewell",
-      events: [
-        {
-          name: "Farewell Brunch",
-          time: "Morning",
-          location: "Gibson Inn",
-          description: "One last gathering before heading home",
-          attire: "Casual",
-        },
-      ],
-    },
   ],
   travel: {
     airports: [
@@ -103,7 +90,7 @@ export const weddingConfig = {
     ],
     shuttles: {
       available: true,
-      returnTime: "Return shuttles to the airports begin at 11:00 AM on Sunday, after the farewell brunch.",
+      returnTime: "Return shuttles to the airports begin at 11:00 AM on Sunday.",
     },
     drivingFromTexas: {
       intro: "For our Texas guests, we recommend breaking up the drive with a stop in New Orleans.",
